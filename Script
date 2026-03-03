@@ -1,6 +1,6 @@
--- Enhanced Key System (Improved GUI: animations, gradients, loading spinner, shake on error, better layout)
+-- Key-protected script loader (dark modern style GUI)
 -- Key: 68170246I$6528
--- Loads on success: https://pastefy.app/Ghy7hgFc/raw
+-- Loads on success: https://pastefy.app/pnuu2L9v/raw
 
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
@@ -15,227 +15,145 @@ local playerGui = player:WaitForChild("PlayerGui")
 local CORRECT_KEY = "68170246I$6528"
 
 local GET_KEY_LINK = "https://yorurl.com/YGHOgl"                  
-local DISCORD_LINK = "https://discord.gg/yourserverhere" 
+local DISCORD_LINK = "https://discord.gg/yourserverhere"  
 
 local function runMainScript()
     -- Automatically loads the new script on correct key
-    loadstring(game:HttpGet("https://pastefy.app/Ghy7hgFc/raw", true))()
+    loadstring(game:HttpGet("https://pastefy.app/pnuu2L9v/raw", true))()
 end
 
--- ============= Improved GUI Creation =============
+-- ============= GUI Creation =============
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "EnhancedKeySystem"
+ScreenGui.Name = "KeySystemGui"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = playerGui
 
 local Frame = Instance.new("Frame")
-Frame.Size = UDim2.new(0, 380, 0, 260)
-Frame.Position = UDim2.new(0.5, -190, 0.5, -130)
-Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+Frame.Size = UDim2.new(0, 360, 0, 240)
+Frame.Position = UDim2.new(0.5, -180, 0.5, -120)
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
 Frame.BorderSizePixel = 0
-Frame.Active = true
 Frame.Parent = ScreenGui
-Frame.Visible = false  -- For fade-in animation
 
 local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(0, 16)
+Corner.CornerRadius = UDim.new(0, 14)
 Corner.Parent = Frame
 
-local Gradient = Instance.new("UIGradient")
-Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 25)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 30, 35))
-}
-Gradient.Parent = Frame
-
 local Stroke = Instance.new("UIStroke")
-Stroke.Color = Color3.fromRGB(70, 130, 255)
-Stroke.Thickness = 1.8
-Stroke.Transparency = 0.3
+Stroke.Color = Color3.fromRGB(80, 140, 255)
+Stroke.Thickness = 1.5
+Stroke.Transparency = 0.4
 Stroke.Parent = Frame
 
 local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 55)
+Title.Size = UDim2.new(1, 0, 0, 50)
 Title.BackgroundTransparency = 1
 Title.Text = "Key System"
-Title.TextColor3 = Color3.fromRGB(130, 190, 255)
-Title.TextSize = 32
+Title.TextColor3 = Color3.fromRGB(120, 180, 255)
+Title.TextSize = 30
 Title.Font = Enum.Font.GothamBold
 Title.Parent = Frame
 
 local Subtitle = Instance.new("TextLabel")
-Subtitle.Size = UDim2.new(0.9, 0, 0, 35)
+Subtitle.Size = UDim2.new(0.9, 0, 0, 30)
 Subtitle.Position = UDim2.new(0.05, 0, 0.22, 0)
 Subtitle.BackgroundTransparency = 1
-Subtitle.Text = "Enter your key to unlock"
-Subtitle.TextColor3 = Color3.fromRGB(190, 190, 210)
-Subtitle.TextSize = 18
-Subtitle.Font = Enum.Font.GothamMedium
+Subtitle.Text = "Enter key to continue"
+Subtitle.TextColor3 = Color3.fromRGB(180, 180, 200)
+Subtitle.TextSize = 16
+Subtitle.Font = Enum.Font.Gotham
 Subtitle.Parent = Frame
 
 local InputBox = Instance.new("TextBox")
-InputBox.Size = UDim2.new(0.85, 0, 0, 50)
+InputBox.Size = UDim2.new(0.85, 0, 0, 45)
 InputBox.Position = UDim2.new(0.075, 0, 0.35, 0)
-InputBox.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+InputBox.BackgroundColor3 = Color3.fromRGB(35, 35, 40)
 InputBox.TextColor3 = Color3.new(1,1,1)
 InputBox.PlaceholderText = "Paste your key here..."
 InputBox.Text = ""
-InputBox.TextSize = 20
+InputBox.TextSize = 18
 InputBox.Font = Enum.Font.Gotham
 InputBox.ClearTextOnFocus = false
 InputBox.Parent = Frame
 
 local InputCorner = Instance.new("UICorner")
-InputCorner.CornerRadius = UDim.new(0, 10)
+InputCorner.CornerRadius = UDim.new(0, 9)
 InputCorner.Parent = InputBox
 
-local InputStroke = Instance.new("UIStroke")
-InputStroke.Color = Color3.fromRGB(50, 50, 60)
-InputStroke.Thickness = 1
-InputStroke.Parent = InputBox
-
 local SubmitBtn = Instance.new("TextButton")
-SubmitBtn.Size = UDim2.new(0.4, 0, 0, 55)
-SubmitBtn.Position = UDim2.new(0.075, 0, 0.55, 0)
-SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 255)
+SubmitBtn.Size = UDim2.new(0.4, 0, 0, 50)
+SubmitBtn.Position = UDim2.new(0.075, 0, 0.58, 0)
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
 SubmitBtn.Text = "Submit"
 SubmitBtn.TextColor3 = Color3.new(1,1,1)
-SubmitBtn.TextSize = 22
-SubmitBtn.Font = Enum.Font.GothamBold
+SubmitBtn.TextSize = 20
+SubmitBtn.Font = Enum.Font.GothamSemibold
 SubmitBtn.Parent = Frame
 
 local SubmitCorner = Instance.new("UICorner")
-SubmitCorner.CornerRadius = UDim.new(0, 12)
+SubmitCorner.CornerRadius = UDim.new(0, 10)
 SubmitCorner.Parent = SubmitBtn
 
 local GetKeyBtn = Instance.new("TextButton")
-GetKeyBtn.Size = UDim2.new(0.4, 0, 0, 55)
-GetKeyBtn.Position = UDim2.new(0.525, 0, 0.55, 0)
-GetKeyBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 110)
+GetKeyBtn.Size = UDim2.new(0.4, 0, 0, 50)
+GetKeyBtn.Position = UDim2.new(0.525, 0, 0.58, 0)
+GetKeyBtn.BackgroundColor3 = Color3.fromRGB(90, 90, 100)
 GetKeyBtn.Text = "Get Key"
 GetKeyBtn.TextColor3 = Color3.new(1,1,1)
-GetKeyBtn.TextSize = 20
-GetKeyBtn.Font = Enum.Font.GothamMedium
+GetKeyBtn.TextSize = 18
+GetKeyBtn.Font = Enum.Font.Gotham
 GetKeyBtn.Parent = Frame
 
 local GetKeyCorner = Instance.new("UICorner")
-GetKeyCorner.CornerRadius = UDim.new(0, 12)
+GetKeyCorner.CornerRadius = UDim.new(0, 10)
 GetKeyCorner.Parent = GetKeyBtn
 
 local DiscordBtn = Instance.new("TextButton")
-DiscordBtn.Size = UDim2.new(0.85, 0, 0, 45)
-DiscordBtn.Position = UDim2.new(0.075, 0, 0.78, 0)
-DiscordBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
+DiscordBtn.Size = UDim2.new(0.85, 0, 0, 40)
+DiscordBtn.Position = UDim2.new(0.075, 0, 0.82, 0)
+DiscordBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 80)
 DiscordBtn.Text = "Copy Discord Link"
-DiscordBtn.TextColor3 = Color3.fromRGB(170, 170, 255)
-DiscordBtn.TextSize = 18
-DiscordBtn.Font = Enum.Font.GothamMedium
+DiscordBtn.TextColor3 = Color3.fromRGB(160, 160, 255)
+DiscordBtn.TextSize = 16
+DiscordBtn.Font = Enum.Font.Gotham
 DiscordBtn.Parent = Frame
 
 local DiscordCorner = Instance.new("UICorner")
-DiscordCorner.CornerRadius = UDim.new(0, 10)
+DiscordCorner.CornerRadius = UDim.new(0, 9)
 DiscordCorner.Parent = DiscordBtn
 
--- Loading Spinner (new!)
-local SpinnerFrame = Instance.new("Frame")
-SpinnerFrame.Size = UDim2.new(0, 40, 0, 40)
-SpinnerFrame.Position = UDim2.new(0.5, -20, 0.5, -20)
-SpinnerFrame.BackgroundTransparency = 1
-SpinnerFrame.Visible = false
-SpinnerFrame.Parent = Frame
-
-local Spinner = Instance.new("ImageLabel")
-Spinner.Size = UDim2.new(1, 0, 1, 0)
-Spinner.BackgroundTransparency = 1
-Spinner.Image = "rbxassetid://5012544693"  -- Roblox loading spinner asset
-Spinner.Parent = SpinnerFrame
-
--- Close Button (new!)
-local CloseBtn = Instance.new("TextButton")
-CloseBtn.Size = UDim2.new(0, 30, 0, 30)
-CloseBtn.Position = UDim2.new(1, -35, 0, 5)
-CloseBtn.BackgroundTransparency = 1
-CloseBtn.Text = "X"
-CloseBtn.TextColor3 = Color3.fromRGB(200, 100, 100)
-CloseBtn.TextSize = 24
-CloseBtn.Font = Enum.Font.GothamBold
-CloseBtn.Parent = Frame
-
-CloseBtn.MouseButton1Click:Connect(function()
-    ScreenGui:Destroy()
-end)
-
--- Enhanced hover/press effects
-local function tweenBtn(btn, enter, press)
-    local goal
-    if press then
-        goal = {Size = btn.Size - UDim2.new(0, 4, 0, 4), BackgroundColor3 = btn.BackgroundColor3:Lerp(Color3.new(0,0,0), 0.1)}
-    elseif enter then
-        goal = {BackgroundColor3 = btn.BackgroundColor3:Lerp(Color3.new(1,1,1), 0.2)}
-    else
-        goal = {Size = btn.Size, BackgroundColor3 = btn.BackgroundColor3}
-    end
-    TweenService:Create(btn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), goal):Play()
+-- Hover effects
+local function tweenBtn(btn, enter)
+    local goal = enter and {BackgroundColor3 = btn.BackgroundColor3:Lerp(Color3.new(1,1,1), 0.15)} or {BackgroundColor3 = btn.BackgroundColor3}
+    TweenService:Create(btn, TweenInfo.new(0.2), goal):Play()
 end
 
 for _, btn in {SubmitBtn, GetKeyBtn, DiscordBtn} do
     btn.MouseEnter:Connect(function() tweenBtn(btn, true) end)
     btn.MouseLeave:Connect(function() tweenBtn(btn, false) end)
-    btn.MouseButton1Down:Connect(function() tweenBtn(btn, false, true) end)
-    btn.MouseButton1Up:Connect(function() tweenBtn(btn, true) end)
 end
 
--- Status helper with shake on error (new!)
-local function setStatus(text, color, shake)
+-- Status helper
+local function setStatus(text, color)
     Subtitle.Text = text
-    Subtitle.TextColor3 = color or Color3.fromRGB(190, 190, 210)
-    if shake then
-        local originalPos = Frame.Position
-        for i = 1, 5 do
-            Frame.Position = originalPos + UDim2.new(0, math.random(-2,2), 0, math.random(-2,2))
-            wait(0.05)
-        end
-        Frame.Position = originalPos
-    end
+    Subtitle.TextColor3 = color or Color3.fromRGB(180, 180, 200)
 end
 
--- Verify key with loading spinner
+-- Verify key function
 local function verifyKey()
-    -- Show spinner
-    SpinnerFrame.Visible = true
-    local spinTween = TweenService:Create(Spinner, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 360})
-    spinTween:Play()
-    spinTween.Completed:Connect(function() spinTween:Play() end)  -- Loop
-
-    wait(1)  -- Simulate check (adjust if needed)
-
     local input = InputBox.Text
     if input == CORRECT_KEY then
-        SpinnerFrame.Visible = false
-        spinTween:Stop()
-        setStatus("Verifying...", Color3.fromRGB(100, 255, 100))
-        wait(0.5)
-        -- Fade out GUI
-        TweenService:Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quad), {BackgroundTransparency = 1}):Play()
-        for _, child in Frame:GetChildren() do
-            if child:IsA("GuiObject") then
-                TweenService:Create(child, TweenInfo.new(0.5), {BackgroundTransparency = 1, TextTransparency = 1, ImageTransparency = 1}):Play()
-            end
-        end
-        wait(0.5)
         ScreenGui:Destroy()
         StarterGui:SetCore("SendNotification", {
             Title = "Access Granted",
             Text = "Loading script...",
             Duration = 4
         })
-        runMainScript()  -- runs the new loadstring
+        runMainScript()  -- runs the new pastefy loadstring
     else
-        SpinnerFrame.Visible = false
-        spinTween:Stop()
-        setStatus("Invalid Key – Try Again", Color3.fromRGB(255, 90, 90), true)  -- with shake
+        setStatus("Invalid Key – Try Again", Color3.fromRGB(255, 90, 90))
         wait(2.5)
-        setStatus("Enter your key to continue")
+        setStatus("Enter key to continue")
     end
 end
 
@@ -264,45 +182,25 @@ DiscordBtn.MouseButton1Click:Connect(function()
     end
 end)
 
--- Draggable frame (improved smoothness)
-local dragToggle, dragInput, dragStart, startPos
-local function updateInput(input)
-    if input == dragInput and dragToggle then
-        local delta = input.Position - dragStart
-        Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-end
-
+-- Draggable frame
+local dragToggle, dragStart, startPos
 Frame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
         dragToggle = true
         dragStart = input.Position
         startPos = Frame.Position
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragToggle = false
-            end
-        end)
     end
 end)
 
-Frame.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
+Frame.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragToggle = false
     end
 end)
 
-UserInputService.InputChanged:Connect(updateInput)
-
--- Fade-in animation on load
-Frame.BackgroundTransparency = 1
-TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-Frame.Visible = true
-for _, child in Frame:GetChildren() do
-    if child:IsA("GuiObject") then
-        child.BackgroundTransparency = 1
-        child.TextTransparency = 1
-        child.ImageTransparency = 1
-        TweenService:Create(child, TweenInfo.new(0.6), {BackgroundTransparency = 0, TextTransparency = 0, ImageTransparency = 0}):Play()
+UserInputService.InputChanged:Connect(function(input)
+    if dragToggle and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
     end
-end
+end) 
