@@ -14,7 +14,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 -- ============= CONFIG =============
 local CORRECT_KEY = "68170246I$6528"
 
-local GET_KEY_LINK = "https://boostylink.com/43K2ybhh"                  
+local GET_KEY_LINK = "https://lootdest.org/s?4lohzV5B"                  
 local DISCORD_LINK = "https://discord.gg/7tqF4sDReU"  
 
 local function runMainScript()
