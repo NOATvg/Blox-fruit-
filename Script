@@ -20,6 +20,7 @@ local DISCORD_LINK = "https://discord.gg/7tqF4sDReU"
 local function runMainScript()
     -- Automatically loads the new script on correct key
     loadstring(game:HttpGet("https://pastefy.app/OMXEI3rj/raw", true))()
+end
 
 -- ============= GUI Creation =============
 local ScreenGui = Instance.new("ScreenGui")
@@ -202,4 +203,4 @@ UserInputService.InputChanged:Connect(function(input)
         local delta = input.Position - dragStart
         Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
     end
-end) 
+end)
